@@ -18,11 +18,13 @@
               <a class="text-gray-500 transition hover:text-gray-500/75 {{ request()->routeIs('home.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}" href="{{ route('home.index') }}"> Beranda </a>
             </li>
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75 {{ request()->routeIs('products.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}" href="#"> Produk </a>
+              <a class="text-gray-500 transition hover:text-gray-500/75 {{ request()->routeIs('products.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}" href="{{ route('products.index') }}"> Produk </a>
             </li>
-            <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75 {{ request()->routeIs('orders.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}" href="#"> Pesanan </a>
-            </li>
+            @auth
+              <li>
+                <a class="text-gray-500 transition hover:text-gray-500/75 {{ request()->routeIs('orders.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}" href="{{ route('orders.index') }}"> Pesanan </a>
+              </li>
+            @endauth
           </ul>          
         </nav>
 
@@ -96,37 +98,62 @@
           <a class="block py-2 text-gray-700 transition hover:text-gray-500" href="{{ route('home.index') }}"> Beranda </a>
         </li>
         <li>
-          <a class="block py-2 text-gray-700 transition hover:text-gray-500" href="#"> Produk </a>
+          <a class="block py-2 text-gray-700 transition hover:text-gray-500" href="{{ route('products.index') }}"> Produk </a>
         </li>
         <li>
-          <a class="block py-2 text-gray-700 transition hover:text-gray-500" href="#"> Pesanan </a>
+          <a class="block py-2 text-gray-700 transition hover:text-gray-500" href="{{ route('orders.index') }}"> Pesanan </a>
         </li>
-        <li>
-          <span class="relative flex justify-center">
-            <div
+        @guest
+          <li>
+            <span class="relative flex justify-center">
+              <div
               class="absolute inset-x-0 h-px -translate-y-1/2 bg-transparent opacity-75 top-1/2 bg-gradient-to-r from-transparent via-gray-500 to-transparent"
-            ></div>
-          
-            <span class="relative z-10 px-6 pb-2 bg-white">Masuk Disini</span>
-          </span>
-        </li>
-        <li>
-          <a
+              ></div>
+              
+              <span class="relative z-10 px-6 pb-2 bg-slate-50">Masuk Disini</span>
+            </span>
+          </li>
+          <li>
+            <a
             class="block bg-slate-950 px-5 py-2.5 text-sm font-medium text-white text-center"
             href="{{ route('login') }}"
-          >
+            >
             Masuk
           </a>
         </li>
         <li>
           <a
-            class="block bg-gray-100 px-5 py-2.5 text-sm font-medium text-slate-950 text-center"
-            href="{{ route('register') }}"
+          class="block bg-gray-100 px-5 py-2.5 text-sm font-medium text-slate-950 text-center"
+          href="{{ route('register') }}"
           >
-            Daftar
-          </a>
-        </li>
-      </ul>
+          Daftar
+        </a>
+      </li>
+    @endguest
+    @auth
+    <a class="block py-2 text-gray-700 transition hover:text-gray-500" href="{{ route('cart.index') }}"> Keranjang </a>
+    <li>
+      <a class="block py-2 text-gray-700 transition hover:text-gray-500" href="{{ route('profile.index') }}"> Profil </a>
+    </li>
+    <li>
+      <span class="relative flex justify-center">
+        <div
+        class="absolute inset-x-0 h-px -translate-y-1/2 bg-transparent opacity-75 top-1/2 bg-gradient-to-r from-transparent via-gray-500 to-transparent"
+        ></div>
+        
+        <span class="relative z-10 px-6 pb-2 bg-slate-50">Keluar Disini</span>
+      </span>
+    </li>
+    <li>
+      <a
+      class="block bg-slate-950 px-5 py-2.5 text-sm font-medium text-white text-center"
+      href="{{ route('logout') }}"
+      >
+      Keluar
+    </a>
+  </li>
+    @endauth
+  </ul>
     </nav>
   </div>
 </header>

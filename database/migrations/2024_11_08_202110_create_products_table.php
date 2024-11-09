@@ -18,8 +18,9 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('stock_quantity');
-            $table->decimal('discout', 10, 2);
+            $table->decimal('discount', 10, 2);
             $table->string('image');
+            $table->string('slug');
             $table->timestamps();
         });
     }
