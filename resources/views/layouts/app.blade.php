@@ -8,10 +8,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-slate-50">
-    @include('components.navbar')
+    @include('components.customers.navbar')
     
     @yield('content')
 
-    @include('components.footer')
+    @include('components.customers.footer')
 </body>
 </html>

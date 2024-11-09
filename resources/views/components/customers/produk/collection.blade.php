@@ -1,25 +1,24 @@
 <section>
   <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
     <header>
-      <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Product Collection</h2>
-
+      <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Koleksi Produk</h2>
+    
       <p class="max-w-md mt-4 text-gray-500">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
-        dicta incidunt est ipsam, officia dolor fugit natus?
+        Temukan berbagai produk pilihan yang sesuai dengan kebutuhan dan gaya Anda.
       </p>
     </header>
-
+    
     <div class="mt-8">
       <p class="text-sm text-gray-500">
-        Showing 
+        Menampilkan 
         <span>{{ $products->firstItem() }}</span> 
-        to 
+        hingga 
         <span>{{ $products->lastItem() }}</span> 
-        of 
+        dari 
         <span>{{ $products->total() }}</span> 
-        products
+        produk
       </p>
-    </div>
+    </div>    
 
     <ul class="grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-4">
       @forelse ( $products as $product )
@@ -55,7 +54,7 @@
         
           <div class="relative p-6 bg-white border border-gray-100">
             <p class="text-gray-700">
-              Rp{{ $product->price }}
+              Rp{{ number_format($product->price, 0, ',', '.') }}
               {{-- <span class="text-gray-400 line-through">$80</span> --}}
             </p>
         

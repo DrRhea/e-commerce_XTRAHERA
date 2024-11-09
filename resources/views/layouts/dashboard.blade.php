@@ -7,7 +7,9 @@
     <title>@yield('title', 'E-Commerce')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="font-['Inter']">
+    @include('components.admin.navbar')
     
+    @yield('content')
 </body>
 </html>

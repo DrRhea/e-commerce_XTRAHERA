@@ -3,7 +3,11 @@
 @section('title', 'Produk | E-Commerce')
 
 @section('content')
-  @include('components.produk.hero')
+  <main>
+    @include('components.customers.produk.hero')
+  </main>
 
-  @include('components.produk.collection', ['products' => $products])
+  <section>
+    @include('components.customers.produk.collection', ['products' => $products])
+  </section>
 @endsection

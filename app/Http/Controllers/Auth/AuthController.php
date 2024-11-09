@@ -33,6 +33,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             // Redirect ke halaman home dengan pesan sukses
+            if(Auth::user()->role == 'admin') {
+                return redirect()->route('dashboard.index')->with('success', 'Anda berhasil login.');
+            }
+            
             return redirect()->route('home.index')->with('success', 'Anda berhasil login.');
         }
 

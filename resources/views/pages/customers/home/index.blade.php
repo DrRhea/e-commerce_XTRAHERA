@@ -5,17 +5,17 @@
 @section('content')
     {{-- Hero --}}
     <main>
-        @include('components.beranda.hero')
+        @include('components.customers.beranda.hero')
     </main>
 
 
     {{-- Sections 2 - Category Showcase --}}
     <section>
-        @include('components.beranda.collection')
+        @include('components.customers.beranda.collection')
     </section>
 
     {{-- Sections 4 - Subscription Pricing --}}
     <section>
-        @include('components.beranda.subscription')
+        @include('components.customers.beranda.subscription')
     </section>
 @endsection
