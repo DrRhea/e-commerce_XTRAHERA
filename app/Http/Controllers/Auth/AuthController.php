@@ -15,20 +15,45 @@ class AuthController extends Controller
         return view('pages/auth/login');
     }
 
+    public function login_post(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ], [
+            'email.required' => 'Email harus diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'password.required' => 'Password harus diisi.',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Regenerate session ID untuk keamanan tambahan
+            $request->session()->regenerate();
+
+            // Redirect ke halaman home dengan pesan sukses
+            return redirect()->route('home.index')->with('success', 'Anda berhasil login.');
+        }
+
+        // Kembalikan ke halaman login dengan pesan error dan input email tetap terisi
+        return back()->withErrors([
+            'email' => 'Kredensial yang diberikan tidak cocok dengan catatan kami.',
+        ])->withInput($request->only('email'));
+    }
+
     public function register()
     {
         return view('pages/auth/register');
     }
 
-    public function store(Request $request)
+    public function register_post(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'required|string|unique:users',
-            'address' => 'nullable|string|max:255',
-            'subscription_status' => 'boolean',
         ], [
             'name.required' => 'Nama harus diisi.',
             'name.string' => 'Nama harus berupa teks.',
@@ -45,32 +70,27 @@ class AuthController extends Controller
             'phone.required' => 'Nomor telepon harus diisi.',
             'phone.string' => 'Nomor telepon harus berupa teks.',
             'phone.unique' => 'Nomor telepon sudah digunakan.',
-            'address.string' => 'Alamat harus berupa teks.',
-            'address.max' => 'Alamat tidak boleh lebih dari :max karakter.',
-            'subscription_status.boolean' => 'Status berlangganan harus dalam format boolean.',
         ]);
 
-        // Mengambil data yang dapat diisi dari permintaan
-        $data = $request->only($this->fillable);
-        // Mengenkripsi password sebelum menyimpannya
-        $data['password'] = Hash::make($request->password);
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+        ];
 
-        // Membuat user baru
         $user = User::create($data);
 
-        // Login user setelah berhasil registrasi
         Auth::login($user);
 
-        // Menambahkan pesan sukses ke session
-        $request->session()->flash('success', 'Anda telah berhasil mendaftar.');
-
-        // Redirect ke halaman home setelah registrasi berhasil
-        return redirect()->route('home.index');
+        return redirect()->route('home.index')->with('success', 'Anda telah berhasil mendaftar.');
     }
 
 
     public function logout()
     {
+        Auth::logout();
 
+        return redirect()->route('login')->with('success', 'Anda telah berhasil keluar.');
     }
 }

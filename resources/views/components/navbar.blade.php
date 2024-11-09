@@ -1,5 +1,5 @@
-<header class="bg-white " x-data="{ open: false }">
-  <div class="fixed z-50 w-full px-4 bg-white sm:px-6 lg:px-8">
+<header class="" x-data="{ open: false }">
+  <div class="fixed z-50 w-full px-4 shadow-sm bg-slate-50 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       {{-- <div class="flex-1 md:flex md:items-center md:gap-12">
         <a class="block text-slate-950" href="#">
@@ -15,18 +15,19 @@
         <nav aria-label="Global" class="hidden md:block">
           <ul class="flex items-center gap-6">
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('home.index') }}"> Beranda </a>
+              <a class="text-gray-500 transition hover:text-gray-500/75 {{ request()->routeIs('home.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}" href="{{ route('home.index') }}"> Beranda </a>
             </li>
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Produk </a>
+              <a class="text-gray-500 transition hover:text-gray-500/75 {{ request()->routeIs('products.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}" href="#"> Produk </a>
             </li>
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Pesanan </a>
+              <a class="text-gray-500 transition hover:text-gray-500/75 {{ request()->routeIs('orders.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}" href="#"> Pesanan </a>
             </li>
-          </ul>
+          </ul>          
         </nav>
 
         <div class="flex items-center gap-4">
+          @if (!Auth::check())
           <div class="sm:flex sm:gap-4">
             <a
               class="bg-slate-950 px-5 py-2.5 font-medium text-white shadow"
@@ -37,13 +38,23 @@
 
             <div class="hidden sm:flex">
               <a
-                class="bg-gray-100 px-5 py-2.5 font-medium text-slate-950"
+                class="border border-slate-950 px-5 py-2.5 font-medium text-slate-950"
                 href="{{ route('register') }}"
               >
                 Daftar
               </a>
             </div>
           </div>
+          @else
+          <div class="sm:flex sm:gap-4">
+            <a
+              class="bg-slate-950 px-5 py-2.5 font-medium text-white shadow"
+              href="{{ route('logout') }}"
+            >
+              Keluar
+            </a>
+          </div>
+          @endif
 
           <!-- Tombol untuk membuka menu mobile -->
           <div class="block md:hidden">
@@ -80,7 +91,7 @@
       aria-label="Global" 
       class="md:hidden"
     >
-      <ul class="px-4 mt-2 space-y-2 text-sm">
+      <ul class="px-4 pb-4 mt-2 space-y-2 text-sm">
         <li>
           <a class="block py-2 text-gray-700 transition hover:text-gray-500" href="{{ route('home.index') }}"> Beranda </a>
         </li>

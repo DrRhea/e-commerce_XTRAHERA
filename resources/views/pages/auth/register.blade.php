@@ -3,7 +3,7 @@
 @section('title', 'Daftar | E-Commerce')
 
 @section('content')
-<section class="bg-white">
+<section class="">
   <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
     <section class="relative flex items-end h-32 bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
       <img
@@ -13,8 +13,8 @@
       />
 
       <div class="hidden lg:relative lg:block lg:p-12">
-        <a class="block text-white" href="#">
-          <span class="sr-only">Home</span>
+        <a class="block text-white" href="{{ route('home.index') }}">
+          <span class="sr-only">Beranda</span>
           <svg
             class="h-8 sm:h-10"
             viewBox="0 0 28 24"
@@ -45,9 +45,9 @@
         <div class="relative block -mt-16 lg:hidden">
           <a
             class="inline-flex items-center justify-center text-blue-600 bg-white rounded-full size-16 sm:size-20"
-            href="#"
+            href="{{ route('home.index') }}"
           >
-            <span class="sr-only">Home</span>
+            <span class="sr-only">Beranda</span>
             <svg
               class="h-8 sm:h-10"
               viewBox="0 0 28 24"
@@ -70,7 +70,8 @@
           </p>
         </div>
 
-        <form action="#" method="POST" class="grid w-full grid-cols-6 gap-6 max-sm:mt-4">
+        <form action="{{ route('register_post') }}" method="POST" class="grid w-full grid-cols-6 gap-6 max-sm:mt-4">
+          @csrf
           <div class="col-span-6">
             <label for="Nama" class="block text-sm font-medium text-gray-700">
               Nama
@@ -81,6 +82,7 @@
               id="Nama"
               name="name"
               placeholder="John Doe"
+              value="{{ old('name') }}"
               class="mt-1 w-full border px-4 py-2 border-gray-200 bg-white text-sm text-gray-700 shadow-sm
               focus:outline-slate-950
               {{ $errors->has('name') ? 'border-red-500' : '' }}"
@@ -99,6 +101,7 @@
               id="Email"
               name="email"
               placeholder="customer@example.com"
+              value="{{ old('email') }}"
               class="mt-1 w-full border px-4 py-2 border-gray-200 bg-white text-sm text-gray-700 shadow-sm
               focus:outline-slate-950
               {{ $errors->has('email') ? 'border-red-500' : '' }}"
@@ -117,6 +120,7 @@
               id="NomorTelepon"
               name="phone"
               placeholder="628xxxxxxxxx"
+              value="{{ old('phone') }}"
               class="mt-1 w-full border px-4 py-2 border-gray-200 bg-white text-sm text-gray-700 shadow-sm
               focus:outline-slate-950
               {{ $errors->has('phone') ? 'border-red-500' : '' }}"

@@ -3,7 +3,7 @@
 @section('title', 'Masuk | E-Commerce')
 
 @section('content')
-<section class="bg-white">
+<section class="">
   <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
     <section class="relative flex items-end h-32 bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
       <img
@@ -13,8 +13,8 @@
       />
 
       <div class="hidden lg:relative lg:block lg:p-12">
-        <a class="block text-white" href="#">
-          <span class="sr-only">Home</span>
+        <a class="block text-white" href="{{ route('home.index') }}">
+          <span class="sr-only">Beranda</span>
           <svg
             class="h-8 sm:h-10"
             viewBox="0 0 28 24"
@@ -45,9 +45,9 @@
         <div class="relative block -mt-16 lg:hidden">
           <a
             class="inline-flex items-center justify-center text-blue-600 bg-white rounded-full size-16 sm:size-20"
-            href="#"
+            href="{{ route('home.index') }}"
           >
-            <span class="sr-only">Home</span>
+            <span class="sr-only">Beranda</span>
             <svg
               class="h-8 sm:h-10"
               viewBox="0 0 28 24"
@@ -70,7 +70,8 @@
           </p>
         </div>
 
-        <form action="#" class="grid grid-cols-6 gap-6 mt-8">
+        <form action="{{ route('login_post') }}" method="POST" class="grid grid-cols-6 gap-6 mt-8">
+          @csrf
 
           <div class="col-span-6">
             <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
@@ -80,8 +81,14 @@
               id="Email"
               name="email"
               placeholder="customer@example.com"
-              class="w-full px-4 py-2 mt-1 text-sm text-gray-700 bg-white border border-gray-200 shadow-sm"
+              value="{{ old('email') }}"
+              class="w-full px-4 py-2 mt-1 text-sm text-gray-700 bg-white border border-gray-200 shadow-sm focus:outline-slate-950
+              {{ $errors->has('email') ? 'border-red-500' : '' }}"
             />
+
+            @if ($errors->has('email'))
+              <div class="mt-1 text-sm text-red-500">{{ $errors->first('email') }}</div>
+            @endif
           </div>
 
           <div class="col-span-6">
@@ -92,8 +99,13 @@
               id="Password"
               name="password"
               placeholder="min. 8 karakter"
-              class="w-full px-4 py-2 mt-1 text-sm text-gray-700 bg-white border border-gray-200 shadow-sm"
+              class="w-full px-4 py-2 mt-1 text-sm text-gray-700 bg-white border border-gray-200 shadow-sm focus:outline-slate-950
+              {{ $errors->has('password') ? 'border-red-500' : '' }}"
             />
+
+            @if ($errors->has('password'))
+              <div class="mt-1 text-sm text-red-500">{{ $errors->first('password') }}</div>
+            @endif
           </div>
 
           <div class="flex flex-col col-span-6 gap-4">
