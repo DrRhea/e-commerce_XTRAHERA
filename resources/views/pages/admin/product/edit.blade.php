@@ -32,6 +32,10 @@
             <i class='text-slate-400 bx bxs-t-shirt'></i>
           </span>
         </div>
+
+        @if ($errors->has('name'))
+          <p class="mt-2 text-sm text-red-600">{{ $errors->first('name') }}</p>
+        @endif
       </div>
 
       <div>
@@ -50,6 +54,10 @@
             
           </span>
         </div>
+
+        @if ($errors->has('description'))
+          <p class="mt-2 text-sm text-red-600">{{ $errors->first('description') }}</p>
+        @endif
       </div>
 
       <div>
@@ -70,6 +78,10 @@
             <i class='text-slate-400 bx bxs-purchase-tag'></i>
           </span>
         </div>
+
+        @if ($errors->has('price'))
+          <p class="mt-2 text-sm text-red-600">{{ $errors->first('price') }}</p>
+        @endif
       </div>
 
       <div>
@@ -81,8 +93,10 @@
             id="category_id"
             class="w-full p-4 text-sm border-gray-200 rounded-lg shadow-sm pe-12"
           >
-            @foreach ( App\Models\Category::all() as $category )
-              <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @foreach (App\Models\Category::all() as $category)
+              <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>
+                {{ $category->name }}
+              </option>
             @endforeach
           </select>
 
@@ -90,6 +104,10 @@
             
           </span>
         </div>
+
+        @if ($errors->has('category_id'))
+          <p class="mt-2 text-sm text-red-600">{{ $errors->first('category_id') }}</p>
+        @endif
       </div>
 
       <div>
@@ -110,6 +128,10 @@
             <i class='text-slate-400 bx bxs-box'></i>
           </span>
         </div>
+
+        @if ($errors->has('stock_quantity'))
+          <p class="mt-2 text-sm text-red-600">{{ $errors->first('stock_quantity') }}</p>
+        @endif
       </div>
 
       <div>
@@ -130,6 +152,10 @@
             <i class='text-slate-400 bx bxs-discount'></i>
           </span>
         </div>
+
+        @if ($errors->has('discount'))
+          <p class="mt-2 text-sm text-red-600">{{ $errors->first('discount') }}</p>
+        @endif
       </div>
 
       <div>
@@ -149,6 +175,10 @@
             <i class='text-slate-400 bx bxs-file-image'></i>
           </span>
         </div>
+
+        @if ($errors->has('image'))
+          <p class="mt-2 text-sm text-red-600">{{ $errors->first('image') }}</p>
+        @endif
       </div>
 
 
