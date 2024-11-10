@@ -20,12 +20,28 @@
       <!-- Desktop Navigation -->
       <nav aria-label="Global" class="hidden md:block">
         <ul class="flex items-center gap-6 text-sm">
-          <li><a class="text-gray-500 transition hover:text-gray-500/75" href="#">Dashboard</a></li>
-          <li><a class="text-gray-500 transition hover:text-gray-500/75" href="#">Produk</a></li>
-          <li><a class="text-gray-500 transition hover:text-gray-500/75" href="#">Pemesanan</a></li>
-          <li><a class="text-gray-500 transition hover:text-gray-500/75" href="#">Users</a></li>
+          <li>
+            <a class="text-gray-500 transition hover:text-gray-500/75 
+              {{ request()->routeIs('dashboard.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}"
+              href="{{ route('dashboard.index') }}">Dashboard</a>
+          </li>
+          <li>
+            <a class="text-gray-500 transition hover:text-gray-500/75
+              {{ request()->routeIs('products.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}"
+              href="{{ route('dashboard.products.index') }}">Produk</a>
+          </li>
+          <li>
+            <a class="text-gray-500 transition hover:text-gray-500/75
+              {{ request()->routeIs('orders.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}"
+              href="#">Pemesanan</a>
+          </li>
+          <li>
+            <a class="text-gray-500 transition hover:text-gray-500/75
+              {{ request()->routeIs('users.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}"
+              href="#">Users</a>
+          </li>
         </ul>
-      </nav>
+      </nav>      
 
       <!-- Profile Menu -->
       <div class="relative hidden md:block" @click.away="profileOpen = false">
@@ -47,11 +63,21 @@
           x-transition
           class="absolute right-0 z-10 w-56 mt-2 bg-white border border-gray-100 rounded-md shadow-lg"
         >
-          <div class="p-2">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700">My profile</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700">Billing summary</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700">Team settings</a>
-          </div>
+        <div class="p-2">
+          <a href="#" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700">
+            <i class="mr-2 bx bx-user"></i><!-- Ikon profil -->
+            Profil
+          </a>
+          <a href="{{ route('home.index') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700">
+            <i class="mr-2 bx bx-home"></i>
+            Halaman Utama
+          </a>
+          <hr class="my-2">
+          <a href="#" class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 rounded-lg hover:bg-red-100 hover:text-red-700">
+            <i class="mr-2 bx bx-log-out"></i> <!-- Ikon logout -->
+            Logout
+          </a>          
+        </div>        
         </div>
       </div>
     </div>
@@ -59,13 +85,31 @@
 
   <!-- Mobile Navigation (Dropdown) -->
   <div x-show="open" x-transition class="md:hidden">
-    <nav aria-label="Global" class="p-4 bg-white border-t border-gray-200">
-      <ul class="space-y-4">
-        <li><a class="block text-gray-500 transition hover:text-gray-500/75" href="#">Dashboard</a></li>
-        <li><a class="block text-gray-500 transition hover:text-gray-500/75" href="#">Produk</a></li>
-        <li><a class="block text-gray-500 transition hover:text-gray-500/75" href="#">Pemesanan</a></li>
-        <li><a class="block text-gray-500 transition hover:text-gray-500/75" href="#">Users</a></li>
-      </ul>
-    </nav>
+    <div x-show="open" x-transition class="md:hidden">
+      <nav aria-label="Global" class="p-4 bg-white border-t border-gray-200">
+        <ul class="space-y-4">
+          <li>
+            <a class="block text-gray-500 transition hover:text-gray-500/75 
+              {{ request()->routeIs('dashboard.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}"
+              href="{{ route('dashboard.index') }}">Dashboard</a>
+          </li>
+          <li>
+            <a class="block text-gray-500 transition hover:text-gray-500/75
+              {{ request()->routeIs('dashboard.products.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}"
+              href="{{ route('dashboard.products.index') }}">Produk</a>
+          </li>
+          <li>
+            <a class="block text-gray-500 transition hover:text-gray-500/75
+              {{ request()->routeIs('dashboard.orders.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}"
+              href="#">Pemesanan</a>
+          </li>
+          <li>
+            <a class="block text-gray-500 transition hover:text-gray-500/75
+              {{ request()->routeIs('dashboard.users.index') ? 'text-gray-900 font-semibold border-b-2 border-gray-900' : '' }}"
+              href="#">Users</a>
+          </li>
+        </ul>
+      </nav>
+    </div>    
   </div>
 </header>

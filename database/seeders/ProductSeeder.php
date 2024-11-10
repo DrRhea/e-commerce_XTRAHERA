@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1,
                 'stock_quantity' => 100,
                 'discount' => 0,
-                'image' => 'storage/products/mens-polo-shirt-short-sleeve.jpg',
+                'image' => 'mens-polo-shirt-short-sleeve.jpg',
                 'slug' => 'mens-polo-shirt-short-sleeve',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -29,7 +29,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1, // Pakaian Pria
                 'stock_quantity' => 80,
                 'discount' => 0,
-                'image' => 'storage/products/mens-jeans-blue-denim.jpg',
+                'image' => 'mens-jeans-blue-denim.jpg',
                 'slug' => 'mens-jeans-blue-denim',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -41,7 +41,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1, // Pakaian Pria
                 'stock_quantity' => 50,
                 'discount' => 0,
-                'image' => 'storage/products/mens-formal-shirt-long-sleeve.jpg',
+                'image' => 'mens-formal-shirt-long-sleeve.jpg',
                 'slug' => 'mens-formal-shirt-long-sleeve',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -53,7 +53,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1, // Pakaian Pria
                 'stock_quantity' => 30,
                 'discount' => 0,
-                'image' => 'storage/products/mens-leather-jacket-black.jpg',
+                'image' => 'mens-leather-jacket-black.jpg',
                 'slug' => 'mens-leather-jacket-black',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -65,7 +65,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1, // Pakaian Pria
                 'stock_quantity' => 60,
                 'discount' => 0,
-                'image' => 'storage/products/mens-hoodie-long-sleeve.jpg',
+                'image' => 'mens-hoodie-long-sleeve.jpg',
                 'slug' => 'mens-hoodie-long-sleeve',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -77,7 +77,7 @@ class ProductSeeder extends Seeder
             //     'category_id' => 2, // Pakaian Wanita
             //     'stock_quantity' => 100,
             //     'discount' => 0,
-            //     'image' => 'storage/products/womens-tshirt-casual.jpg',
+            //     'image' => 'womens-tshirt-casual.jpg',
             //     'slug' => 'womens-tshirt-casual',
             //     'created_at' => now(),
             //     'updated_at' => now(),
@@ -89,7 +89,7 @@ class ProductSeeder extends Seeder
             //     'category_id' => 2, // Pakaian Wanita
             //     'stock_quantity' => 50,
             //     'discount' => 0,
-            //     'image' => 'storage/products/womens-mini-skirt-party.jpg',
+            //     'image' => 'womens-mini-skirt-party.jpg',
             //     'slug' => 'womens-mini-skirt-party',
             //     'created_at' => now(),
             //     'updated_at' => now(),
@@ -101,7 +101,7 @@ class ProductSeeder extends Seeder
             //     'category_id' => 2, // Pakaian Wanita
             //     'stock_quantity' => 40,
             //     'discount' => 10, // Diskon untuk satu produk
-            //     'image' => 'storage/products/womens-dress-long-formal.jpg',
+            //     'image' => 'womens-dress-long-formal.jpg',
             //     'slug' => 'womens-dress-long-formal',
             //     'created_at' => now(),
             //     'updated_at' => now(),
@@ -113,7 +113,7 @@ class ProductSeeder extends Seeder
             //     'category_id' => 2, // Pakaian Wanita
             //     'stock_quantity' => 50,
             //     'discount' => 0,
-            //     'image' => 'storage/products/womens-cardigan-knitted.jpg',
+            //     'image' => 'womens-cardigan-knitted.jpg',
             //     'slug' => 'womens-cardigan-knitted',
             //     'created_at' => now(),
             //     'updated_at' => now(),
@@ -125,7 +125,7 @@ class ProductSeeder extends Seeder
             //     'category_id' => 3, // Pakaian Anak
             //     'stock_quantity' => 100,
             //     'discount' => 0,
-            //     'image' => 'storage/products/kids-tshirt-cartoon-print.jpg',
+            //     'image' => 'kids-tshirt-cartoon-print.jpg',
             //     'slug' => 'kids-tshirt-cartoon-print',
             //     'created_at' => now(),
             //     'updated_at' => now(),
@@ -137,7 +137,7 @@ class ProductSeeder extends Seeder
             //     'category_id' => 4, // Sepatu
             //     'stock_quantity' => 70,
             //     'discount' => 0,
-            //     'image' => 'storage/products/casual-sneakers-white-lace-up.jpg',
+            //     'image' => 'casual-sneakers-white-lace-up.jpg',
             //     'slug' => 'casual-sneakers-white-lace-up',
             //     'created_at' => now(),
             //     'updated_at' => now(),
@@ -149,7 +149,7 @@ class ProductSeeder extends Seeder
             //     'category_id' => 5, // Aksesoris
             //     'stock_quantity' => 50,
             //     'discount' => 0,
-            //     'image' => 'storage/products/bucket-hat-canvas.jpg',
+            //     'image' => 'bucket-hat-canvas.jpg',
             //     'slug' => 'bucket-hat-canvas',
             //     'created_at' => now(),
             //     'updated_at' => now(),

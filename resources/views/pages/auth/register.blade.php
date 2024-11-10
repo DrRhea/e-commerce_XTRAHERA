@@ -112,9 +112,8 @@
               placeholder="628xxxxxxxxx"
               value="{{ old('phone') }}"
               class="mt-1 w-full border px-4 py-2 border-gray-200 bg-white text-sm text-gray-700 shadow-sm
-              focus:outline-slate-950
+              focus:outline-slate-950 [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none
               {{ $errors->has('phone') ? 'border-red-500' : '' }}"
-              style="appearance: none; webkit-appearance: none;"
             />
             
             @if ($errors->has('phone'))
