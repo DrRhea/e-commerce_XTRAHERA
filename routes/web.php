@@ -7,6 +7,7 @@ use App\Http\Controllers\Customer\ProductController;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Customer\CartController;
 
 Route::middleware(['guest'])->group(function () {
     Route::controller(AuthController::class)->group(function () {
@@ -22,21 +23,28 @@ Route::get('/keluar', [AuthController::class, 'logout'])->middleware('auth')->na
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
-Route::get('/pesanan', [ProductController::class, 'index'])->name('orders.index');
-Route::get('/keranjang', [ProductController::class, 'index'])->name('cart.index');
-Route::get('/profile', [ProductController::class, 'index'])->name('profile.index');
+
+Route::middleware(['auth', 'customer'])->group(function () {
+    Route::get('/pesanan', [ProductController::class, 'index'])->name('orders.index');
+
+    Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/keranjang/tambah/{id}', [CartController::class, 'store'])->name('cart.store');
+    Route::delete('/keranjang/hapus/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+    Route::get('/profile', [ProductController::class, 'index'])->name('profile.index');    
+});
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/', 'index')->name('dashboard.index');
     });
     Route::controller(AdminProductController::class)->group(function () {
-    Route::get('/produk', 'index')->name('dashboard.products.index');
-    Route::get('/produk/tambah', 'create')->name('dashboard.products.create');
-    Route::post('/produk/tambah', 'store')->name('dashboard.products.store');
-    Route::get('/produk/edit/{slug}', 'edit')->name('dashboard.products.edit');
-    Route::put('/produk/edit/{slug}', 'update')->name('dashboard.products.update');
-    Route::delete('/produk/delete/{id}', 'destroy')->name('dashboard.products.destroy');
+        Route::get('/produk', 'index')->name('dashboard.products.index');
+        Route::get('/produk/tambah', 'create')->name('dashboard.products.create');
+        Route::post('/produk/tambah', 'store')->name('dashboard.products.store');
+        Route::get('/produk/edit/{slug}', 'edit')->name('dashboard.products.edit');
+        Route::put('/produk/edit/{slug}', 'update')->name('dashboard.products.update');
+        Route::delete('/produk/delete/{id}', 'destroy')->name('dashboard.products.destroy');
     });
 });
 
